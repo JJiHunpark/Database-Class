@@ -1,0 +1,185 @@
+테이블 생성
+
+CREATE TABLE MANAGER
+(
+M_CODE VARCHAR2(5) PRIMARY KEY,
+M_NAME VARCHAR2(20) NOT NULL ,
+M_CAREER_Y NUMBER(5) ,
+M_CONTRACT VARCHAR2(20) ,
+M_NATIONALITY VARCHAR2(20) 
+);
+
+
+CREATE TABLE TEAM
+(
+T_CODE VARCHAR2(5) PRIMARY KEY,
+T_NAME VARCHAR2(20) NOT NULL,
+M_CODE VARCHAR2(5) NOT NULL REFERENCES MANAGER(M_CODE)
+);
+
+
+CREATE TABLE PLAYER
+(
+P_CODE VARCHAR2(6) PRIMARY KEY,
+P_NAME VARCHAR2(30) NOT NULL ,
+P_AGE NUMBER(3),
+P_CM NUMBER(3),
+P_KG NUMBER(3),
+P_NATIONALITY VARCHAR2(20),
+T_CODE NOT NULL REFERENCES TEAM (T_CODE),
+P_POSITION VARCHAR2(10) NOT NULL,
+P_CONTRACT VARCHAR2(20) ,
+P_PAY NUMBER(20) NOT NULL
+);
+
+
+insert into manager values ('001','펩 과르디올라', 9, '2019-07-17', '스페인');
+insert into manager values ('002','조세 무리뉴', 16, '2019-07-21', '포루투갈');
+insert into manager values ('003','마우리시오 포체티노', 7, '2021-05-28', '아르헨티나');
+insert into manager values ('004','아르센 벵거', 35, '2022-07-13', '프랑스');
+insert into manager values ('005','위르겐 클롭', 15, '2018-06-25', '독일');
+
+
+insert into team values ('00A', '맨체스터 시티', '001');
+insert into team values ('00B', '맨체스터 유나이티드', '002');
+insert into team values ('00C', '토트넘 핫스퍼', '003');
+insert into team values ('00D', '아스날', '004');
+
+
+
+insert into player values ('00D001', '페트르 체흐', 35, 196, 90, '체코', '00D', 'GK', '2021-06-30', 1325000000);
+insert into player values ('00D002', '엑토르 베예린', 23, 177, 74, '스페인', '00D', 'DF', '2020-06-30', 9300000000);
+insert into player values ('00D003', '로랑 코시엘니', 33, 186, 75, '프랑스', '00D', 'DF', '2018-06-30', 6500000000);
+insert into player values ('00D004', '메르테사커', 34, 198, 90, '독일', '00D', 'DF', '2020-06-30', 6950000000);
+insert into player values ('00D005', '나초 몬레알', 32, 178, 72, '스페인', '00D', 'DF', '2019-06-30', 130000000);
+insert into player values ('00D006', '그라니트 샤카', 26, 185, 82, '유고슬라비아', '00D', 'MF', '2019-06-30', 420000000);
+insert into player values ('00D007', '아론 램지', 28, 177, 70, '영국', '00D', 'MF', '2020-06-30', 9750000000);
+insert into player values ('00D008', '메수트 외질', 30, 180, 76, '독일', '00D', 'MF', '2020-06-30', 10200000000);
+insert into player values ('00D009', '라카제트', 27, 175, 73, '프랑스', '00D', 'FW', '2020-06-30', 9300000000);
+insert into player values ('00D010', '지올리비 에루', 32, 192, 88, '프랑스', '00D', 'FW', '2021-06-30', 9600000000);
+insert into player values ('00D011', '알렉시스 산체스', 30, 168, 62, '칠레', '00D', 'FW', '2019-06-30', 12100000000);
+
+
+insert into player values ('00A001', '클라우디오 브라보', 35, 184, 80, '칠레', '00A', 'GK', '2020-06-30', 13950000000);
+insert into player values ('00A002', '존 스톤스', 24, 189, 77, '잉글랜드', '00A', 'DF', '2022-06-30', 8650000000);
+insert into player values ('00A003', '뱅상 콤파니', 32, 193, 91, '벨기에', '00A', 'DF', '2019-06-30', 13950000000);
+insert into player values ('00A004', '니콜라스 오타멘디', 30, 183, 81, '아르헨티나', '00A', 'DF', '2021-07-30', 9380000000);
+insert into player values ('00A005', '카일 워커', 28, 183, 83, '잉글랜드', '00A', 'DF', '2021-07-30', 11320000000);
+insert into player values ('00A006', '일카이 귄도간', 24, 180, 78, '독일', '00A', 'MF', '2020-06-30', 9950000000);
+insert into player values ('00A007', '르로이 사네', 21, 183, 75, '독일', '00A', 'MF', '2020-07-30', 9530000000);
+insert into player values ('00A008', '야야 투레', 35, 189, 90, '코트디부아르', '00A', 'MF', '2019-06-30', 14320000000);
+insert into player values ('00A009', '라힘 스털링', 20, 171, 69, '잉글랜드', '00A', 'MF', '2020-06-30', 13950000000);
+insert into player values ('00A010', '케빈 데 브라이너', 24, 181, 76, '벨기에', '00A', 'MF', '2021-06-30', 13950000000);
+insert into player values ('00A011', '세르히오 아구에로', 26, 172, 74, '아르헨티나', '00A', 'ST', '2019-06-30', 14850000000);
+
+insert into player values ('00B001', '다비드 데 헤아', 28, 193, 76, '스페인', '00B', 'GK', '2019-06-30', 18600000000);
+insert into player values ('00B002', '크리스 스모링', 29, 194, 90, '잉글랜드', '00B', 'DF', '2019-06-30', 6500000000);
+insert into player values ('00B003', '에릭 바일리', 24, 187, 77, '코트디부아르', '00B', 'DF', '2020-06-30', 2550000000);
+insert into player values ('00B004', '안토니오 발렌시아', 33, 181, 78, '에콰도르', '00B', 'DF', '2018-06-30', 7900000000);
+insert into player values ('00B005', '루크 쇼', 23, 186, 75, '잉글랜드', '00B', 'DF', '2019-06-30', 10200000000);
+insert into player values ('00B006', '안데르 에라라', 29, 182, 73, '스페인', '00B', 'MF', '2018-06-30', 10700000000);
+insert into player values ('00B007', '폴 포그바', 25, 191, 80, '프랑스', '00B', 'MF', '2021-06-30', 22450000000);
+insert into player values ('00B008', '앙토니 마르시알', 23, 181, 76, '프랑스', '00B', 'MF', '2019-06-30', 10200000000);
+insert into player values ('00B009', '후안 마타', 30, 171, 65, '스페인', '00B', 'MF', '2020-06-30', 14800000000);
+insert into player values ('00B010', '헨리크 미키타리안', 29, 178, 72, '아르메니아', '00B', 'MF', '2020-06-30', 9300000000);
+insert into player values ('00B011', '줄라탄 이브라히모비치', 37, 195, 95, '스웨덴', '00B', 'ST', '2022-07-30', 20350000000);
+
+insert into player values ('00C001', '위고 요리스', 32, 188,78 , '프랑스', '00C', 'GK', '2019-06-30', 8800000000);
+insert into player values ('00C002', '토비 알데르베이럴트', 29, 186, 81, '벨기에', '00C', 'DF', '2020-06-30', 7450000000);
+insert into player values ('00C003', '얀 베르통헨', 31, 189, 79, '벨기에', '00C', 'DF', '2018-06-30', 3000000000);
+insert into player values ('00C004', '키에런 트리피어', 28, 178, 71, '영국', '00C', 'DF', '2019-06-30', 5100000000);
+insert into player values ('00C005', '대니 로즈', 28, 172, 73, '잉글랜드', '00C', 'MF', '2019-06-30', 2800000000);
+insert into player values ('00C006', '빅토르 완야마', 27, 188, 77, '케냐', '00C', 'MF', '2021.06.30', 3150000000);
+insert into player values ('00C007', '델레 알리', 22, 185, 77, '잉글랜드', '00C', 'MF', '2021-06-30', 1850000000);
+insert into player values ('00C008', '손흥민', 26, 183, 76, '대한민국', '00C', 'MF', '2020-06-30', 7900000000);
+insert into player values ('00C009', '크리스티안 에릭센', 26, 177, 71, '덴마크', '00C', 'MF', '2020-06-30', 7300000000);
+insert into player values ('00C010', '에릭 라멜라', 26, 183, 79, '아르헨티나', '00C', 'MF', '2018-06-30', 7450000000);
+insert into player values ('00C011', '해리 케인', 25, 190, 83, '잉글랜드', '00C', 'ST', '2020-06-30', 4650000000);
+
+
+
+
+CREATE TABLE BOARD
+(
+B_CODE VARCHAR2(6) PRIMARY KEY,
+T_CODE VARCHAR2(5) NOT NULL REFERENCES TEAM(T_CODE),
+B_NAME VARCHAR2(20) NOT NULL ,
+B_POSITION VARCHAR2(20)
+);
+
+
+CREATE TABLE COACH
+(
+C_CODE VARCHAR2(6) PRIMARY KEY,
+T_CODE VARCHAR2(5) NOT NULL REFERENCES TEAM(T_CODE),
+C_NAME VARCHAR2(20) NOT NULL,
+C_POSITION VARCHAR2(20)
+);
+
+CREATE TABLE AGENT
+(
+A_CODE CHAR(3) PRIMARY KEY,
+P_CODE VARCHAR(6) NOT NULL REFERENCES PLAYER(P_CODE),
+A_NAME VARCHAR2(30)
+);
+
+insert into agent values ('A01','00A010','페트릭 데 코스타');
+insert into agent values ('A02','00B007','미노 라이올라');
+insert into agent values ('A03','00C008','블리마이스터');
+insert into agent values ('A04','00D010','콘스탄틴 두미르라스쿠');
+
+
+insert into board values ('00AB01','00A','만수르', '구단주');
+insert into board values ('00AB02','00A','칼둔 알 무바라크', '회장');
+insert into board values ('00AB03','00A','페란 소라이노', 'CEO');
+insert into board values ('00AB04','00A','톰 글릭', 'COO');
+insert into board values ('00AB05','00A','티키 베기리스타인', '풋볼 디렉터');
+insert into board values ('00AB06','00A','존 윌리엄스', '풋볼 행정관');
+
+insert into board values ('00BB01','00B','글레이저 가문', '구단주');
+insert into board values ('00BB02','00B','조엘 글레이저', '회장');
+insert into board values ('00BB03','00B','에이브럼 글레이저', '회장');
+insert into board values ('00BB04','00B','우드워드', 'CEO');
+insert into board values ('00BB05','00B','마이클 볼링브로크', 'COO');
+insert into board values ('00BB06','00B','하비에르 리발타라', '풋볼디렉터');
+
+insert into board values ('00CB01','00C','조 루이스', '구단주');
+insert into board values ('00CB02','00C','다니엘 레비', '회장');
+insert into board values ('00CB03','00C','메튜 콜레컷', 'CEO');
+insert into board values ('00CB04','00C','레베카 카이플혼', 'COO');
+
+insert into board values ('00DB01','00D','스탠 크랑키', '구단주');
+insert into board values ('00DB02','00D','칩스 케스윅', '회장');
+insert into board values ('00DB03','00D','이반 가지디스', 'CEO');
+insert into board values ('00DB04','00D','벤케이트셤', 'COO');
+insert into board values ('00DB05','00D','로리 해리스', '풋볼 디렉터');
+
+insert into coach values ('00AC01','00A','브라이언 키드', '수석코치');
+insert into coach values ('00AC02','00A','루벤 코우시야스', '수석코치');
+insert into coach values ('00AC03','00A','사비 만시도르', '골키퍼 코치');
+insert into coach values ('00AC04','00A','조제 카벨로', '체력코치');
+insert into coach values ('00AC05','00A','마크 앨런', '아카데미 사장');
+insert into coach values ('00AC06','00A','제이슨 윌콕스', '아카데미 감독');
+
+insert into coach values ('00BC01','00B','루이 파리아', '수석코치');
+insert into coach values ('00BC02','00B','에밀리오 알바레스', '골키퍼 코치');
+insert into coach values ('00BC03','00B','카를로스 라린', '체력코치');
+insert into coach values ('00BC04','00B','토니 길', '팀 닥터');
+insert into coach values ('00BC05','00B','마이크 도넬리', '영양사');
+insert into coach values ('00BC06','00B','니키 버트', '아카데미 감독');
+
+insert into coach values ('00CC01','00C','미구엘 디아고스티노', '수석코치');
+insert into coach values ('00CC02','00C','토니 히메네즈', '골키퍼 코치');
+insert into coach values ('00CC03','00C','헤수스 페레즈', '에이전트 매니저');
+insert into coach values ('00CC04','00C','슈테펜 프루인트', '기술 코디네이터');
+insert into coach values ('00CC05','00C','스티븐 히첸', '이적분석 전문가');
+
+insert into coach values ('00DC01','00D','스티븐 볼드', '수석코치');
+insert into coach values ('00DC02','00D','보로 프리모라치', '1군코치');
+insert into coach values ('00DC03','00D','닐 밴필드', '2군코치');
+insert into coach values ('00DC04','00D','빅 아커스 오비', '장비관리자');
+insert into coach values ('00DC05','00D','데이빗 코트', '아카데미 감독');
+insert into coach values ('00DC06','00D','게리 페이튼', '골키퍼 코치');
+insert into coach values ('00DC07','00D','토니 콜버트', '체력코치');
+insert into coach values ('00DC08','00D','게리 오드리스콜', '팀 닥터');
+insert into coach values ('00DC09','00D','스티브 로울리', '스카우트');
